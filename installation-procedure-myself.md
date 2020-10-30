@@ -98,6 +98,15 @@ traefik-ingress-controller-l4g85
 $ vagrant halt
 ```
 
+## 管理
+
+- 获取 admin 的 token
+
+```shell
+# 在某个 vm 的 node 中执行
+sh hack/get-dashboard-token.sh
+```
+
 ## 问题列表
 
 - 什么是 pause container ? 看这里：https://github.com/rootsongjc/kubernetes-handbook/blob/master/concepts/pause-container.md 为了解决 pod 中的共享网络问题，是一个最基础的容器
