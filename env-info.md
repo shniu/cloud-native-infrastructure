@@ -1,0 +1,51 @@
+
+## User
+
+- user and password
+
+vagrant / vagrant
+
+## Admin role token
+
+- node1
+
+- node2
+
+- node3 
+
+```text
+eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhZG1pbi10b2tlbi05OWp2cCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJhZG1pbiIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjJjNDAyZjE3LTc0OGQtNGRkMS1iNTk0LTNhMjk1MTAyMTBiZSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTphZG1pbiJ9.onO5mZRx9NzUf4O43Wr8NIZxls3lwOHcuWhsxhNi8uL6f4rIOSaA1oz5NccWH1VOtZ6Aa8W3IiUyvhb-bB4Z8F0a2JGiD9RotTY9j9K-UBgoJp_bH-F6ULofSZxc1WyJGkTezKSrW03TiZeQ3yhICPSe5O30jwGPnF-qXb8-q0Q5Wn9kLN1fM02LWutXdmDCVhIcAR7ePreo1uagcvE3kUTyyILLpVLIZL7Y_rL7NepDnVl3STMdrGbUTHVWZFTQgMQQ-_jN1yK4xb62PYewrIZwbZEMv06R3aDbhpdb_NEByUmeae3V78vVjo45_Fm-OawW__5oKdqwUedx4vwKsg
+```
+
+## Startup info
+
+node3: configure node3
+node3: deploy coredns
+node3: serviceaccount/coredns created
+node3: clusterrole.rbac.authorization.k8s.io/system:coredns created
+node3: clusterrolebinding.rbac.authorization.k8s.io/system:coredns created
+node3: configmap/coredns created
+node3: deployment.extensions/coredns created
+node3: service/kube-dns created
+node3: /home/vagrant
+node3: deploy kubernetes dashboard
+node3: secret/kubernetes-dashboard-certs created
+node3: serviceaccount/kubernetes-dashboard created
+node3: role.rbac.authorization.k8s.io/kubernetes-dashboard-minimal created
+node3: rolebinding.rbac.authorization.k8s.io/kubernetes-dashboard-minimal created
+node3: deployment.apps/kubernetes-dashboard created
+node3: service/kubernetes-dashboard created
+node3: create admin role token
+node3: clusterrolebinding.rbac.authorization.k8s.io/admin created
+node3: serviceaccount/admin created
+node3: the admin role token is:
+node3: eyJhbGciOiJSUzI1NiIsImtpZCI6IiJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhZG1pbi10b2tlbi05OWp2cCIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJhZG1pbiIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjJjNDAyZjE3LTc0OGQtNGRkMS1iNTk0LTNhMjk1MTAyMTBiZSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDprdWJlLXN5c3RlbTphZG1pbiJ9.onO5mZRx9NzUf4O43Wr8NIZxls3lwOHcuWhsxhNi8uL6f4rIOSaA1oz5NccWH1VOtZ6Aa8W3IiUyvhb-bB4Z8F0a2JGiD9RotTY9j9K-UBgoJp_bH-F6ULofSZxc1WyJGkTezKSrW03TiZeQ3yhICPSe5O30jwGPnF-qXb8-q0Q5Wn9kLN1fM02LWutXdmDCVhIcAR7ePreo1uagcvE3kUTyyILLpVLIZL7Y_rL7NepDnVl3STMdrGbUTHVWZFTQgMQQ-_jN1yK4xb62PYewrIZwbZEMv06R3aDbhpdb_NEByUmeae3V78vVjo45_Fm-OawW__5oKdqwUedx4vwKsg
+node3: login to dashboard with the above token
+node3: https://172.17.8.101:8443
+node3: install traefik ingress controller
+node3: ingress.extensions/traefik-ingress created
+node3: clusterrolebinding.rbac.authorization.k8s.io/traefik-ingress-controller created
+node3: serviceaccount/traefik-ingress-controller created
+node3: daemonset.extensions/traefik-ingress-controller created
+node3: service/traefik-ingress-service created
+node3: Configure Kubectl to autocomplete

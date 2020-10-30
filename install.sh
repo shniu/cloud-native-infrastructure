@@ -39,6 +39,7 @@ cat /etc/hosts
 
 echo 'set nameserver'
 echo "nameserver 8.8.8.8">/etc/resolv.conf
+echo "nameserver 192.168.154.1" > /etc/resolv.conf
 cat /etc/resolv.conf
 
 echo 'disable swap'
