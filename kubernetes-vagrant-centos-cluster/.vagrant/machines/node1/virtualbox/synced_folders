@@ -1,1 +1,0 @@
-{"rsync":{"/vagrant":{"type":"rsync","guestpath":"/vagrant","hostpath":"/Users/dfg/workspace/vms/cloud-native-infrastructure/kubernetes-vagrant-centos-cluster","disabled":false,"__vagrantfile":true,"owner":"vagrant","group":"vagrant"}}}
