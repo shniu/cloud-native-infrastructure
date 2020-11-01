@@ -41,9 +41,16 @@ Deploying a Kubernetes cluster from scratch (without any tools).
 ### Blog & Course
 
 - [Kubernetes 学习路径](https://www.infoq.cn/article/9DTX*1i1Z8hsxkdrPmhk)
+- [云原生初学者入门必读](https://cloudnative.to/blog/must-read-for-cloud-native-beginner/)
+- [jimmysong.io](https://jimmysong.io/)
+- [云原生知识图谱](https://github.com/cloudnativeto/cloudnative-knowledge-map)
 
 ### Book
 
 - [Kubernetes Handbook](https://jimmysong.io/kubernetes-handbook/)
 - [Cloud Native Patterns: Designing Change-tolerant Software](https://weread.qq.com/web/reader/17832ae071f94ab7178264bkc81322c012c81e728d9d180)
 
+### Projects, Organizations and Communities
+
+- [CNCF](https://www.cncf.io/)
+- [云原生社区](https://cloudnative.to/)
