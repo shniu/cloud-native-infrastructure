@@ -14,5 +14,5 @@ Setting up a distributed Kubernetes cluster along with Istio service mesh locall
 - Minikube
 - Kind
 - Kubeadm
-- Manual installtion
+- [Manual installation](manual-installation)
 
