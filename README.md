@@ -11,3 +11,8 @@ Research and learn to build cloud-native applications based on cloud-native infr
 
 Setting up a distributed Kubernetes cluster along with Istio service mesh locally with Vagrant and VirtualBox, only PoC or Demo use.
 
+- Minikube
+- Kind
+- Kubeadm
+- Manual installtion
+
