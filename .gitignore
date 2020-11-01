@@ -2,4 +2,5 @@
 kubernetes-vagrant-centos-cluster/.vagrant/*
 .DS_Store
 *.tar.gz
-kubernetes
+# kubernetes
+kubernetes-vagrant-centos-cluster/kubernetes

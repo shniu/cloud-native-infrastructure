@@ -34,7 +34,7 @@ Deploying a Kubernetes cluster from scratch (without any tools).
 
 ### Kubernetes Concepts & Usage
 
-[TODO]
+- [kubernetes](kubernetes/README.md)
 
 ## Learning Resource
 
