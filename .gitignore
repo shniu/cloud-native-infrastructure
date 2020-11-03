@@ -1,6 +1,9 @@
 .vagrant/*
 kubernetes-vagrant-centos-cluster/.vagrant/*
+**/.vagrant/*
 .DS_Store
 *.tar.gz
 # kubernetes
 kubernetes-vagrant-centos-cluster/kubernetes
+
+*.log
