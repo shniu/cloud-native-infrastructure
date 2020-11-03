@@ -49,8 +49,10 @@ Deploying a Kubernetes cluster from scratch (without any tools).
 
 - [Kubernetes Handbook](https://jimmysong.io/kubernetes-handbook/)
 - [Cloud Native Patterns: Designing Change-tolerant Software](https://weread.qq.com/web/reader/17832ae071f94ab7178264bkc81322c012c81e728d9d180)
+- [Kubernetes 指南](https://kubernetes.feisky.xyz/)
 
 ### Projects, Organizations and Communities
 
+- [Registry: Harbor](https://goharbor.io/) An open source trusted cloud native registry project that stores, signs, and scans content.
 - [CNCF](https://www.cncf.io/)
 - [云原生社区](https://cloudnative.to/)
