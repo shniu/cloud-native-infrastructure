@@ -11,7 +11,7 @@ Research and learn to build cloud-native applications based on cloud computing, 
 
 Setting up a distributed Kubernetes cluster along with Istio service mesh locally with Vagrant and VirtualBox, only PoC or Demo use.
 
-- Minikube
+- [Minikube](minikube-dev-env)
 - Kind
 - Kubeadm
 - [Manual installation](manual-installation)
@@ -35,6 +35,8 @@ Deploying a Kubernetes cluster from scratch (without any tools).
 ### Kubernetes Concepts & Usage
 
 - [kubernetes](kubernetes/README.md)
+
+- [The Kubernetes resource model](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md)
 
 ## Learning Resource
 
