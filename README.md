@@ -38,6 +38,13 @@ Deploying a Kubernetes cluster from scratch (without any tools).
 
 - [The Kubernetes resource model](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md)
 
+- [DNS and CoreDNS](https://draveness.me/dns-coredns/)
+- [集群内部服务发现 - DNS](https://www.qikqiak.com/post/service-found-dns/) 
+
+介绍了集群内服务发现的基本原理
+
+> 普通的 Service：会生成servicename.namespace.svc.cluster.local的域名，会解析到 Service 对应的 ClusterIP 上，在 Pod 之间的调用可以简写成 servicename.namespace，如果处于同一个命名空间下面，甚至可以只写成 servicename 即可访问
+
 ## Learning Resource
 
 ### Blog & Course

@@ -38,7 +38,19 @@ minikube ssh
 
 - redis
 
+```
+// Usage:
+//  Clean
+./kube-clean-redis.sh
+```
+
+Ref:
+
 1. [部署 Redis 单节点](http://www.mydlq.club/article/76/)
+
+- xxl-job
+
+[TODO] 目前的问题是如何初始化 xxl-job-admin 的 sql 脚本，可以考虑在创建 mysql 时把 sql 脚本挂载进去，然后在宿主机执行 mysql 客户端远程执行
 
 ## Resources
 
