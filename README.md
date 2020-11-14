@@ -32,6 +32,12 @@ Deploying a Kubernetes cluster from scratch (without any tools).
 
 ## Concepts & Usage
 
+### etcd
+
+- [etcd 使用](etcd/README.md)
+- [etcd Clustering](https://etcd.io/docs/v3.4.0/op-guide/clustering/)
+- ...
+
 ### Kubernetes Concepts & Usage
 
 - [kubernetes](kubernetes/README.md)

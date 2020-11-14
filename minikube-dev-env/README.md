@@ -56,3 +56,4 @@ Ref:
 
 - [Aliyun Minikube](https://github.com/AliyunContainerService/minikube)
 - [Minikube](https://minikube.sigs.k8s.io/)
+- [有同样想法的一个项目](https://github.com/foxiswho/k8s-nacos-sentinel-rocketmq-zipkin-elasticsearch-redis-mysql)
