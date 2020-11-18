@@ -24,3 +24,15 @@ mv /tmp/etcd-${ETCD_VER}-darwin-amd64/* /tmp/etcd-download-test && rm -rf mv /tm
 /tmp/etcd-download-test/etcd --version
 /tmp/etcd-download-test/etcdctl version
 ```
+
+## Etcd Clustering
+
+```shell
+# 下载并安装 etcd
+
+# 合理规划集群，至少 3 个节点，最好 5 个或者 7 个
+# 启动集群，分别执行
+etcd --config-file clustering/s1.config.yml
+etcd --config-file clustering/s2.config.yml
+etcd --config-file clustering/s3.config.yml
+```
