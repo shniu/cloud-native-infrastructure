@@ -1,7 +1,55 @@
 #!/bin/bash
 
+# Parameters
+doInit=false
+mysql=true
+redis=true
+eureka=true
+xxlJob=true
+rocketMQ=true
+
+demo="None"
+
+function usage() {
+    echo -e "kube-start provides the following features: \n"
+    echo -e "Options"
+    echo -e "    -i, --init            执行初始化操作，默认不执行"
+    echo -e "    --disable-mysql       不启动 mysql service，默认启动"
+    echo -e "    --disable-redis       不启动 redis service，默认启动"
+    echo -e "    --disable-eureka      不启动 eureka service，默认启动"
+    echo -e "    --disable-xxl-job     不启动 xxl-job service，默认启动"
+    echo -e "    --disable-rocketmq    不启动 rocketMQ service，默认启动"
+    echo -e "    -h, --help            查看帮助"
+}
+
+while [ "$1" != "" ]; do
+    case $1 in
+        -i | --init       )         doInit=true
+                                    ;;
+        --demo            )         shift
+                                    demo="$1"
+                                    ;;
+        --disable-mysql   )         mysql=false
+                                    ;;
+        --disable-redis   )         redis=false
+                                    ;;
+        --disable-eureka  )         eureka=false
+                                    ;;
+        --disable-xxl-job )         xxlJob=false
+                                    ;;
+        --disable-xxl-job )         rocketMQ=false
+                                    ;;
+        -h | --help       )         usage
+                                    exit 0
+                                    ;;
+        *                 )         usage
+                                    exit 1
+    esac
+    shift
+done
+
 dir=$(pwd)
-echo "Working directory: $dir"
+echo -e "Working directory: $dir \n"
 
 # ----------------------------------------------------------------
 # mysql-client@5.7 is keg-only, which means it was not symlinked into /usr/local,
@@ -44,34 +92,59 @@ minikube start --driver=virtualbox \
     --memory=3096
 echo -e "=== minikube started === \n"
 
-echo '=== Deploy mysql... ==='
-minikube kubectl -- apply -f resources/mysql-service.yaml
-echo -e "=== Deploy mysql finished \n"
+if $mysql ; then
+    echo '=== Deploy mysql... ==='
+    minikube kubectl -- apply -f resources/mysql-service.yaml
+    echo -e "=== Deploy mysql finished === \n"
+else
+    minikube kubectl -- scale --replicas=0 deployment/mysql
+    echo -e "=== Disable mysql service === \n"
+fi
 
-echo '=== Deploy redis... ==='
-minikube kubectl -- apply -f resources/redis-service.yaml
-echo -e "=== Deploy redis finished \n"
+if $redis ; then
+    echo '=== Deploy redis... ==='
+    minikube kubectl -- apply -f resources/redis-service.yaml
+    echo -e "=== Deploy redis finished === \n"
+else
+    minikube kubectl -- scale --replicas=0 deployment/redis
+    echo -e "=== Disable redis service === \n"
+fi
 
-echo -e "=== Deploy RocketMQ... === \n"
+if $rocketMQ ; then
+    echo -e "=== Deploy RocketMQ... === \n"
+fi
 
 # echo 'Start Spirng Cloud Config...'
 # https://hub.docker.com/r/hyness/spring-cloud-config-server
 
-echo -e "=== Deploy Spring Euraka ==="
-# https://github.com/BitInit/eureka-on-kubernetes
-minikube kubectl -- apply -f resources/eureka-service.yaml
-echo -e "=== Deploy Eureka finished === \n"
+if $eureka ; then
+    echo -e "=== Deploy Spring Euraka ==="
+    # https://github.com/BitInit/eureka-on-kubernetes
+    minikube kubectl -- apply -f resources/eureka-service.yaml
+    echo -e "=== Deploy Eureka finished === \n"
+else
+    minikube kubectl -- scale --replicas=0 statefulsets/eureka
+    echo -e "=== Disable Eureka service === \n"
+fi
 
-echo '=== Start XXL-JOB Scheduler Center...'
-# Sleep 30s waiting for mysql to start successfully
-echo "Sleep 30s waiting for mysql to start successfully"
-sleep 30s
+if $xxlJob ; then
+    echo '=== Start XXL-JOB Scheduler Center...'
+    # Sleep 30s waiting for mysql to start successfully
 
-echo 'Kube init'
-. kube-init.sh
-echo -e "Kube init finished"
+    if $doInit ; then
+        echo "Sleep 30s waiting for mysql to start successfully"
+        sleep 30s
 
-minikube kubectl -- apply -f resources/xxl-service.yaml
-echo -e "=== Deploy XXL-JOB finished === \n"
+        echo 'Kube init'
+        . kube-init.sh --init-database
+        echo -e "Kube init finished"
+    fi
+
+    minikube kubectl -- apply -f resources/xxl-service.yaml
+    echo -e "=== Deploy XXL-JOB finished === \n"
+else
+    minikube kubectl -- scale --replicas=0 deployment/xxl-job
+    echo -e "=== Disable XXL-JOB === \n"
+fi
 
 echo "Deploy finished."

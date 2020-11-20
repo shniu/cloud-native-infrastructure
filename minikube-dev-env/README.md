@@ -4,9 +4,17 @@ Building Local Development Environments with minikube.
 
 ## Environments
 
-MySQL: 30306
-Redis: 30379
-XXL-Job: 31080
+1. MySQL: 30306
+2. Redis: 30379
+3. XXL-Job: 31080
+4. Eureka: 30761
+
+使用 `kube-ip.sh` 来获取服务的 ip 地址：
+
+```shell
+$ ./kube-ip.sh
+192.168.99.100
+```
 
 ## Preparing Minikube
 
