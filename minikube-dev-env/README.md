@@ -2,6 +2,12 @@
 
 Building Local Development Environments with minikube.
 
+## Environments
+
+MySQL: 30306
+Redis: 30379
+XXL-Job: 31080
+
 ## Preparing Minikube
 
 - Install
@@ -19,6 +25,8 @@ chmod +x kube-start.sh
 ```
 
 - SSH
+
+ssh user is docker, password is tcuser
 
 ```shell
 # Query minikube node ip

@@ -20,24 +20,47 @@ spec:
     matchLabels:
       app: xxl-job
   template:
-    containers:
-    - name: xxl-job
-      image: xuxueli/xxl-job-admin:2.2.0
-      imagePullPolicy: IfNotPresent
-      resources:
-        limits:
-          cpu: 400m
-          memory: 256Mi
-        requests:
-          cpu: 100m
-          memory: 256Mi
-      env:
-      - name: TZ
-        value: Asia/Shanghai
-      - name: PARAMS
-        valueFrom:
-          configMapKeyRef:
-            name: xxl-job-cm
-            key: PARAMS
-      ports:
-      - containerPort: 8080
+    metadata:
+      labels:
+        app: xxl-job
+        env: dev
+    spec:
+      containers:
+      - name: xxl-job
+        image: xuxueli/xxl-job-admin:2.2.0
+        imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            cpu: 400m
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 256Mi
+        env:
+        - name: TZ
+          value: Asia/Shanghai
+        - name: PARAMS
+          valueFrom:
+            configMapKeyRef:
+              name: xxl-job-cm
+              key: PARAMS
+        ports:
+        - containerPort: 8080
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: xxl-job
+  labels:
+    app: xxl-job
+    env: dev
+spec:
+  selector:
+    app: xxl-job
+  ports:
+  - port: 8080
+    targetPort: 8080
+    nodePort: 31080
+  type: NodePort

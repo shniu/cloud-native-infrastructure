@@ -1,8 +1,9 @@
 #!/bin/bash
 
 dir=$(pwd)
-echo "$dir"
+echo "Working directory: $dir"
 
+# ----------------------------------------------------------------
 # mysql-client@5.7 is keg-only, which means it was not symlinked into /usr/local,
 # because this is an alternate version of another formula.
 
@@ -15,34 +16,62 @@ echo "$dir"
 
 # For pkg-config to find mysql-client@5.7 you may need to set:
 #   export PKG_CONFIG_PATH="/usr/local/opt/mysql-client@5.7/lib/pkgconfig"
-if ! type mysql >/dev/null 2>&1; then
-    echo 'Install mysql-client 5.7 ...'
-    brew install mysql-client@5.7
-    # echo 'export PATH="/usr/local/opt/mysql-client@5.7/bin:$PATH"' >> ~/.zshrc
-    echo 'export PATH="/usr/local/opt/mysql-client@5.7/bin:$PATH"' >> ~/.bash_profile
-    source ~/.bash_profile
-else
-    echo 'mysql-client already installed.';
-fi
+function checkDependencies() {
+    echo '=== Check dependencies and automatically installs them when required ==='
 
-echo 'minikube start...'
+    if ! type mysql >/dev/null 2>&1; then
+        echo 'Install mysql-client 5.7 ...'
+        brew install mysql-client@5.7
+        # echo 'export PATH="/usr/local/opt/mysql-client@5.7/bin:$PATH"' >> ~/.zshrc
+        echo 'export PATH="/usr/local/opt/mysql-client@5.7/bin:$PATH"' >> ~/.bash_profile
+        source ~/.bash_profile
+    else
+        echo 'mysql-client already installed.';
+    fi
+
+    echo -e "=== Dependency checking completed === \n"
+}
+
+# check first
+checkDependencies
+
+echo '=== Starting minikube ==='
 minikube start --driver=virtualbox \
     --image-mirror-country cn \
     --iso-url=https://kubernetes.oss-cn-hangzhou.aliyuncs.com/minikube/iso/minikube-v1.13.0.iso \
     --registry-mirror=https://ncf649yh.mirror.aliyuncs.com \
     --mount --mount-string=".:/data" \
     --memory=3096
+echo -e "=== minikube started === \n"
 
-echo 'Start mysql...'
+echo '=== Deploy mysql... ==='
 minikube kubectl -- apply -f resources/mysql-service.yaml
+echo -e "=== Deploy mysql finished \n"
 
-echo 'Start redis...'
+echo '=== Deploy redis... ==='
 minikube kubectl -- apply -f resources/redis-service.yaml
+echo -e "=== Deploy redis finished \n"
 
-echo 'Start XXL-JOB Scheduler Center...'
+echo -e "=== Deploy RocketMQ... === \n"
 
-echo 'Start RocketMQ...'
+# echo 'Start Spirng Cloud Config...'
+# https://hub.docker.com/r/hyness/spring-cloud-config-server
 
-echo 'Start Spirng Cloud Config...'
+echo -e "=== Deploy Spring Euraka ==="
+# https://github.com/BitInit/eureka-on-kubernetes
+minikube kubectl -- apply -f resources/eureka-service.yaml
+echo -e "=== Deploy Eureka finished === \n"
 
-echo 'Start Spring Euraka...'
+echo '=== Start XXL-JOB Scheduler Center...'
+# Sleep 30s waiting for mysql to start successfully
+echo "Sleep 30s waiting for mysql to start successfully"
+sleep 30s
+
+echo 'Kube init'
+. kube-init.sh
+echo -e "Kube init finished"
+
+minikube kubectl -- apply -f resources/xxl-service.yaml
+echo -e "=== Deploy XXL-JOB finished === \n"
+
+echo "Deploy finished."
