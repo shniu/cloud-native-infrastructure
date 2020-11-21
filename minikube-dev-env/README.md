@@ -30,6 +30,22 @@ chmod +x macos-install.sh
 ```shell
 chmod +x kube-start.sh
 ./kube-start.sh
+
+# 查看 kube-start.sh 提供的功能
+./kube-start.sh -h
+kube-start provides the following features: 
+
+Options
+    -i, --init            执行初始化操作，默认不执行
+    --disable-mysql       不启动 mysql service，默认启动
+    --disable-redis       不启动 redis service，默认启动
+    --disable-eureka      不启动 eureka service，默认启动
+    --disable-xxl-job     不启动 xxl-job service，默认启动
+    --disable-rocketmq    不启动 rocketMQ service，默认启动
+    -h, --help            查看帮助
+
+# 比如不启动 eureka
+./kube-start.sh --disable-eureka
 ```
 
 - SSH
@@ -66,7 +82,6 @@ Ref:
 
 - xxl-job
 
-[TODO] 目前的问题是如何初始化 xxl-job-admin 的 sql 脚本，可以考虑在创建 mysql 时把 sql 脚本挂载进去，然后在宿主机执行 mysql 客户端远程执行
 
 ## Resources
 
