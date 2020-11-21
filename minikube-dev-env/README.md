@@ -53,17 +53,15 @@ Options
 ssh user is docker, password is tcuser
 
 ```shell
-# Query minikube node ip
-minikube ip
+# 执行运行，可以登录到虚拟机
+./kube-ssh.sh
 
-# Option 1: ssh
+# Query minikube node ip
+./kube-ip.sh
 ssh docker@192.168.99.100
+
 # or
 ssh docker@$(minikube ip)
-# password is tcuser
-
-# Option 2
-minikube ssh
 ```
 
 ## Building local development environment
