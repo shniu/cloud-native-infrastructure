@@ -6,7 +6,7 @@ metadata:
   labels:
     type: local
 spec:
-  storageClassName: manual
+  storageClassName: local-storage
   capacity:
     storage: 5Gi
   accessModes:
@@ -19,7 +19,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: mysql-pv-claim
 spec:
-  storageClassName: manual
+  # storageClassName: manual
+  storageClassName: local-storage
   accessModes:
     - ReadWriteOnce
   resources:
@@ -37,6 +38,7 @@ metadata:
     app: mysql
 spec:
   replicas: 1
+  # serviceName: mysql
   selector:
     matchLabels:
       app: mysql
@@ -48,6 +50,7 @@ spec:
       containers:
       - image: mysql:5.7
         name: mysql
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3306
         args: 
