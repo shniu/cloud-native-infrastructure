@@ -14,7 +14,7 @@ data:
     appendonly yes
     appendfsync everysec
     protected-mode no
-    requirepass 123456
+    # requirepass 123456
     maxclients 1000
     pidfile /data/redis/redis-6379.pid
 
