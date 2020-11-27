@@ -7,6 +7,7 @@ redis=true
 eureka=true
 xxlJob=true
 rocketMQ=true
+bitgo=false
 
 demo="None"
 
@@ -19,6 +20,7 @@ function usage() {
     echo -e "    --disable-eureka      不启动 eureka service，默认启动"
     echo -e "    --disable-xxl-job     不启动 xxl-job service，默认启动"
     echo -e "    --disable-rocketmq    不启动 rocketMQ service，默认启动"
+    echo -e "    --enable-bitgo        启动 BitGo service，默认不启动"
     echo -e "    -h, --help            查看帮助"
 }
 
@@ -38,6 +40,8 @@ while [ "$1" != "" ]; do
         --disable-xxl-job )         xxlJob=false
                                     ;;
         --disable-xxl-job )         rocketMQ=false
+                                    ;;
+        --enable-bitgo    )         bitgo=true
                                     ;;
         -h | --help       )         usage
                                     exit 0
@@ -153,6 +157,14 @@ if $xxlJob ; then
 else
     minikube kubectl -- scale --replicas=0 deployment/xxl-job
     echo -e "=== Disable XXL-JOB === \n"
+fi
+
+if $bitgo ; then
+    echo '=== Start BitGo express service...'
+    minikube kubectl -- apply -f resources/bitgo-express-service.yaml
+else
+    minikube kubectl -- scale --replicas=0 deployment/bitgo
+    echo -e "=== Disable bitgo express service === \n"
 fi
 
 echo "Deploy finished."
