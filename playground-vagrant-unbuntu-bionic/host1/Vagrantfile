@@ -73,6 +73,10 @@ Vagrant.configure("2") do |config|
     apt install inetutils-traceroute
     apt install traceroute
 
+    apt install cpu-checker
+    kvm-ok
+
+    # 18.10 libvirt-daemon-system libvirt-clients
     apt install qemu qemu-kvm libvirt-bin bridge-utils virt-manager
   SHELL
 end

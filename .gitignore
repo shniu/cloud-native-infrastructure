@@ -7,3 +7,8 @@ kubernetes-vagrant-centos-cluster/.vagrant/*
 kubernetes-vagrant-centos-cluster/kubernetes
 
 *.log
+
+*.iso
+
+*.pid
+**/data/*
