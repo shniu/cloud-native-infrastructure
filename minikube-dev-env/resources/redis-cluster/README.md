@@ -38,6 +38,10 @@ Address 1: 172.17.0.13 redis-cluster-3.redis-cluster.default.svc.cluster.local
 
 # 监控 pods 的变动情况
 kubectl get po -l app=redis-cluster -w
-https://kubernetes.io/zh/docs/tutorials/stateful-application/basic-stateful-set/
-https://kubernetes.io/zh/docs/tasks/run-application/run-replicated-stateful-application/
 ```
+
+### Resource
+
+- https://kubernetes.io/zh/docs/tutorials/stateful-application/basic-stateful-set/
+- https://kubernetes.io/zh/docs/tasks/run-application/run-replicated-stateful-application/
+- https://www.infoq.cn/article/lurk0tgtgkc9iwcl7sqm
