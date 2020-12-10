@@ -45,3 +45,4 @@ kubectl get po -l app=redis-cluster -w
 - https://kubernetes.io/zh/docs/tutorials/stateful-application/basic-stateful-set/
 - https://kubernetes.io/zh/docs/tasks/run-application/run-replicated-stateful-application/
 - https://www.infoq.cn/article/lurk0tgtgkc9iwcl7sqm
+- https://cloud.tencent.com/developer/article/1392872
