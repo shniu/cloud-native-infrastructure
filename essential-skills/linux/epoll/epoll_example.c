@@ -1,5 +1,6 @@
 /**
  * via: https://suchprogramming.com/epoll-in-3-easy-steps/
+ * Makefile: https://stackoverflow.com/questions/16931770/makefile4-missing-separator-stop
  */
 
 #include <stdio.h>
@@ -33,19 +34,19 @@ int main(int argc, char **argv) {
 
     while (running) {
         printf("\nPolling for input...\n");
-	event_count = epoll_wait(epoll_fd, events, MAX_EVENTS, 30000);
-	printf("%d ready events\n", event_count);
-	for (i = 0; i < event_count; i++) {
+	    event_count = epoll_wait(epoll_fd, events, MAX_EVENTS, 30000);
+	    printf("%d ready events\n", event_count);
+        for (i = 0; i < event_count; i++) {
             printf("Reading file descriptor '%d' -- ", events[i].data.fd);
-	    bytes_read = read(events[i].data.fd, read_buffer, READ_SIZE);
-	    printf("%zd bytes read.\n", bytes_read);
-	    read_buffer[bytes_read] = '\0';
-	    printf("Read '%s'\n", read_buffer);
+            bytes_read = read(events[i].data.fd, read_buffer, READ_SIZE);
+            printf("%zd bytes read.\n", bytes_read);
+            read_buffer[bytes_read] = '\0';
+            printf("Read '%s'\n", read_buffer);
 
-	    if (!strncmp(read_buffer, "stop\n", 5)) {
-		running = 0;
-	    }
-	}
+            if (!strncmp(read_buffer, "stop\n", 5)) {
+            running = 0;
+            }
+        }
     }
 
     if (close(epoll_fd)) {
