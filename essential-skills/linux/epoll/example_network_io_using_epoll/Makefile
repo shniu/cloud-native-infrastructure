@@ -1,7 +1,7 @@
-all: netio_epoll
+all: netio_epoll.o
 
-epoll_example: netio_epoll.c
+netio_epoll.o: netio_epoll.c
 	gcc -m64 -Wall -Werror -o $@ netio_epoll.c
 
 clean: 
-	@rm -v netio_epoll
+	@rm -v *.o
